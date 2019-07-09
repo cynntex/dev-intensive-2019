@@ -2,7 +2,6 @@ package ru.skillbranch.devintensive.utils
 
 object Utils {
     fun parseFullName(fullName: String?): Pair<String?, String?> {
-        // TODO: 2019-07-05 fix method null 
 
         val parts: List<String>? = fullName?.split(" ")
         if (fullName.isNullOrBlank()) return null to null
