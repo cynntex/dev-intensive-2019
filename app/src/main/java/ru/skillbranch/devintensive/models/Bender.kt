@@ -25,7 +25,7 @@ class Bender (var status:Status = Status.NORMAL, var question: Question = Questi
 
         return if (question === Question.IDLE) {
             "Отлично - ты справился\nНа этом все, вопросов больше нет" to status.color
-        } else if (question.answers.contains(answer.trim().toLowerCase())) {
+        } else if (question.answer.contains(answer.trim().toLowerCase())) {
             question = question.nextQuestion()
             "Отлично - ты справился\n${question.question}" to status.color
         } else {
@@ -58,7 +58,7 @@ class Bender (var status:Status = Status.NORMAL, var question: Question = Questi
 
 
 
-    enum class Question(val question:String, val answers:List<String>){
+    enum class Question(val question:String, val answer:List<String>){
         NAME("Как меня зовут?", listOf("бендер", "bender")) {
             override fun nextQuestion(): Question = PROFESSION
             override fun validateAnswer(answer: String): Boolean = answer.trim().firstOrNull()?.isUpperCase() ?: false
